@@ -34,27 +34,27 @@ fun NavigationBarHome(onClick: (Int) -> Unit) {
 
     val items = listOf(
         NavigationItemData(
-            icon = painterResource(id = R.drawable.icons_home),
+            icon = painterResource(id = R.drawable.lingoteoro),
             contentDescription = "Oro",
             label = "Oro"
         ),
         NavigationItemData(
-            icon = painterResource(id = R.drawable.icons_home),
+            icon = painterResource(id = R.drawable.lingoteplata),
             contentDescription = "Plata",
             label = "Plata"
         ),
         NavigationItemData(
-            icon = painterResource(id = R.drawable.icons_home),
+            icon = painterResource(id = R.drawable.soldadura),
             contentDescription = "Soldaduras",
             label = "Soldaduras"
         ),
         NavigationItemData(
-            icon = painterResource(id = R.drawable.icons_home),
+            icon = painterResource(id = R.drawable.fundicion),
             contentDescription = "Fundición",
             label = "Fundición"
         ),
         NavigationItemData(
-            icon = painterResource(id = R.drawable.icons_home),
+            icon = painterResource(id = R.drawable.joyeria),
             contentDescription = "Utilidades de joyería",
             label = "Utiles"
         )
@@ -62,11 +62,11 @@ fun NavigationBarHome(onClick: (Int) -> Unit) {
     )
 
     NavigationBar(
-        modifier = Modifier,
-        //.clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+        modifier = Modifier
+            .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
         //.border(1.dp, LisColorAzulClaro40, RoundedCornerShape(16.dp)),
-        contentColor = Color.White,
-        containerColor = Color.Transparent,
+        //contentColor = Color.White,
+        //containerColor = Color.Transparent,
         windowInsets = NavigationBarDefaults.windowInsets
     ) {
         items.forEachIndexed { index, item ->
@@ -79,13 +79,13 @@ fun NavigationBarHome(onClick: (Int) -> Unit) {
                     )
                 },
                 label = { Text(text = item.label) },
-                selected = false,//selecionado == index,
+                selected = true,//selecionado == index,
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = Color.White,  // Color del icono seleccionado
-                    //unselectedIconColor = LisColorAzulClaro,
-                    //selectedTextColor = LisColorAzulClaro40,
-                    //unselectedTextColor = LisColorAzulClaro,
-                    //indicatorColor = LisColorAzulClaro40,
+                    selectedIconColor = Color.Unspecified,  // Color del icono seleccionado
+                    unselectedIconColor = Color.Unspecified,
+                    selectedTextColor = Color.Unspecified,
+                    unselectedTextColor = Color.Unspecified,
+                    indicatorColor = Color.Unspecified,
                 ),
                 onClick = { }
             )
