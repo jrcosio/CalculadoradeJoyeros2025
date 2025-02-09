@@ -2,6 +2,7 @@ package com.jrblanco.calculadoradejoyeros2021.Principal
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,10 +28,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jrblanco.calculadoradejoyeros2021.Home.ui.viewmodel.HomeScreenIntent
 import com.jrblanco.calculadoradejoyeros2021.R
 
 @Composable
-fun PrincipalScreen(modifier: Modifier = Modifier) {
+fun PrincipalScreen(
+    modifier: Modifier = Modifier,
+    onNavigate: (HomeScreenIntent) -> Unit
+) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -41,34 +46,35 @@ fun PrincipalScreen(modifier: Modifier = Modifier) {
             imageResId = R.drawable.lingotesdeorocolor,
             title = stringResource(R.string.SeccionOro),
             subtitle = stringResource(R.string.TextoSeccionOro),
-        )
+        ) { onNavigate(HomeScreenIntent.SelectOro) }
         SeccionPrincipal(
             imageResId = R.drawable.lingotesdeplatacolor,
             title = stringResource(R.string.SeccionPlata),
             subtitle = stringResource(R.string.TextoSeccionPlata),
-        )
+        ) { onNavigate(HomeScreenIntent.SelectPlata) }
         SeccionPrincipal(
             imageResId = R.drawable.sopletecolor,
             title = stringResource(R.string.SeccionSoldadura),
             subtitle = stringResource(R.string.TextoSeccionSoldadura),
-        )
+        ) { onNavigate(HomeScreenIntent.SelectSoldadura) }
         SeccionPrincipal(
             imageResId = R.drawable.utilescolor,
             title = stringResource(R.string.SeccionUtiles),
             subtitle = stringResource(R.string.TextoSeccionUtiles),
-        )
+        ) { onNavigate(HomeScreenIntent.SelectUtiles) }
 
     }
 }
 
 @Composable
 
-fun SeccionPrincipal(imageResId: Int, title: String, subtitle: String) {
+fun SeccionPrincipal(imageResId: Int, title: String, subtitle: String, onClick: () -> Unit) {
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp, vertical = 4.dp),
+            .padding(horizontal = 8.dp, vertical = 4.dp)
+            .clickable { onClick() },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
         elevation = CardDefaults.cardElevation(8.dp),
     ) {
@@ -80,7 +86,11 @@ fun SeccionPrincipal(imageResId: Int, title: String, subtitle: String) {
                 modifier = Modifier
                     .size(130.dp)
                     .padding(8.dp)
-                    .border(1.dp, MaterialTheme.colorScheme.onPrimaryContainer, RoundedCornerShape(8.dp))
+                    .border(
+                        1.dp,
+                        MaterialTheme.colorScheme.onPrimaryContainer,
+                        RoundedCornerShape(8.dp)
+                    )
                     .clip(RoundedCornerShape(8.dp)),
                 contentAlignment = Alignment.Center
             ) {
