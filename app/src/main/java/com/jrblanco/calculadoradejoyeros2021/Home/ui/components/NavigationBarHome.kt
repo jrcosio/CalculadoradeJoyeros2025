@@ -1,6 +1,5 @@
 package com.jrblanco.calculadoradejoyeros2021.Home.ui.components
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -25,40 +24,45 @@ import com.jrblanco.calculadoradejoyeros2021.R
 data class NavigationItemData(
     val icon: Painter,
     val contentDescription: String,
-    val label: String
+    val label: String,
+    val isSelect: Boolean
 )
 
 @Composable
 fun NavigationBarHome(onClick: (Int) -> Unit) {
-    //var selecionado by rememberSaveable { mutableIntStateOf(selectInicio) }
+    var selecionado by rememberSaveable { mutableIntStateOf(2) }
 
     val items = listOf(
         NavigationItemData(
-            icon = painterResource(id = R.drawable.lingoteoro),
+            icon = painterResource(id = R.drawable.lingotesdeoro),
             contentDescription = "Oro",
-            label = "Oro"
+            label = "Oro",
+            isSelect = selecionado == 0
         ),
         NavigationItemData(
-            icon = painterResource(id = R.drawable.lingoteplata),
+            icon = painterResource(id = R.drawable.lingotesdeplata),
             contentDescription = "Plata",
-            label = "Plata"
+            label = "Plata",
+            isSelect = selecionado == 1
         ),
         NavigationItemData(
-            icon = painterResource(id = R.drawable.soldadura),
-            contentDescription = "Soldaduras",
-            label = "Soldaduras"
+            icon = painterResource(id = R.drawable.homejoyeria),
+            contentDescription = "Principal",
+            label = "Principal",
+            isSelect = selecionado == 2
         ),
         NavigationItemData(
-            icon = painterResource(id = R.drawable.fundicion),
-            contentDescription = "Fundición",
-            label = "Fundición"
+            icon = painterResource(id = R.drawable.soplete),
+            contentDescription = "Soldadura",
+            label = "Soldadura",
+            isSelect = selecionado == 3
         ),
         NavigationItemData(
-            icon = painterResource(id = R.drawable.joyeria),
-            contentDescription = "Utilidades de joyería",
-            label = "Utiles"
+            icon = painterResource(id = R.drawable.utiles),
+            contentDescription = "Útiles",
+            label = "Útiles",
+            isSelect = selecionado == 4
         )
-
     )
 
     NavigationBar(
@@ -79,7 +83,7 @@ fun NavigationBarHome(onClick: (Int) -> Unit) {
                     )
                 },
                 label = { Text(text = item.label) },
-                selected = true,//selecionado == index,
+                selected = item.isSelect,//selecionado == index,
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = Color.Unspecified,  // Color del icono seleccionado
                     unselectedIconColor = Color.Unspecified,
@@ -87,7 +91,10 @@ fun NavigationBarHome(onClick: (Int) -> Unit) {
                     unselectedTextColor = Color.Unspecified,
                     indicatorColor = Color.Unspecified,
                 ),
-                onClick = { }
+                onClick = {
+                    selecionado = index
+                    onClick(index)
+                }
             )
         }
     }

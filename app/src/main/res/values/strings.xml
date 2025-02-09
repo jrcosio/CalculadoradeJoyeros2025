@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Calculadora de Joyeros</string>
+    <string name="SeccionOro">Oro</string>
+    <string name="TextoSeccionOro">Explora cómo, a partir de oro de 24 quilates, se pueden obtener diferentes aleaciones con distintos quilatajes.</string>
+    <string name="SeccionPlata">Plata</string>
+    <string name="SeccionSoldadura">Soldadura</string>
+    <string name="SeccionUtiles">Útiles</string>
+    <string name="TextoSeccionPlata">Descubre cómo, a partir de plata pura (999), se pueden obtener diferentes aleaciones con diversos grados de pureza.</string>
+    <string name="TextoSeccionSoldadura">Descubre los tipos de soldadura en joyería para unir oro y plata, desde duras hasta blandas.</string>
+    <string name="TextoSeccionUtiles">Conversores, cálculos de fundición y otras herramientas esenciales para el trabajo en joyería.</string>
 </resources>
