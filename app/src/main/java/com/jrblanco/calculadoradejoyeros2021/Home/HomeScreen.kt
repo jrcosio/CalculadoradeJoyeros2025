@@ -26,8 +26,8 @@ fun HomeScreen(
     viewModel: HomeScreenViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
-
     val state by viewModel.state.collectAsState()
+
 
     LaunchedEffect(state) {
         when (state) {
@@ -52,7 +52,6 @@ fun HomeScreen(
                     3 -> viewModel.handleIntent(HomeScreenIntent.SelectSoldadura)
                     4 -> viewModel.handleIntent(HomeScreenIntent.SelectUtiles)
                 }
-
             }
         }
     ) { innerPadding ->

@@ -16,3 +16,6 @@ object Soldadura
 
 @Serializable
 object Utiles
+
+@Serializable
+object About
