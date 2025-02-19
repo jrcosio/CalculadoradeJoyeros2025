@@ -1,10 +1,9 @@
 package com.jrblanco.calculadoradejoyeros2021.Oro.ui.componentes
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -31,19 +30,20 @@ import com.jrblanco.calculadoradejoyeros2021.Oro.ui.data.TipoDeOro
 @Composable
 fun CardOro(item: TipoDeOro, estado: String = "", onClick: (String) -> Unit) {
 
-    val colorcard = if (estado == item.title) {
-        MaterialTheme.colorScheme.tertiaryContainer
+    val (colorCard, colorBorde) = if (estado == item.title) {
+        MaterialTheme.colorScheme.tertiaryContainer to MaterialTheme.colorScheme.secondary
     } else {
-        MaterialTheme.colorScheme.primaryContainer
+        MaterialTheme.colorScheme.primaryContainer to Color.Transparent
     }
     Card(
         modifier = Modifier
             .width(180.dp)
             .height(50.dp)
             .padding(horizontal = 6.dp)
-            .clickable { onClick(item.title) },
+            .clickable { onClick(item.title) }
+            .border(1.dp, colorBorde, MaterialTheme.shapes.small),
         colors = CardDefaults.cardColors(
-            containerColor = colorcard,
+            containerColor = colorCard,
         ),
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
